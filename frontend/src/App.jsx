@@ -94,7 +94,7 @@ function AuthLayout({ title, subtitle, children }) {
         {children}
       </section>
 
-      <footer>CampusSphere AI Â· One Campus. Every Connection.</footer>
+      <footer>CampusSphere AI · One Campus. Every Connection.</footer>
     </main>
   );
 }
@@ -1622,7 +1622,7 @@ function FacultyManagement() {
             </div>
 
             <div className="faculty-field" style={{ marginTop: 22 }}>
-              <label>Temporary Password â€” Show Only Once</label>
+              <label>Temporary Password — Show Only Once</label>
 
               <div className="faculty-password-row">
                 <input
@@ -2168,7 +2168,7 @@ function StudentDashboard() {
             <article className="cs-panel cs-community-post" key={post.id}>
               <div className="cs-community-post-head"><span className="cs-avatar">{authorInitials}</span><div className="cs-community-author"><strong>{post.author_name || "Campus member"}</strong><small>{post.created_at ? new Date(post.created_at).toLocaleString() : "Just now"}</small></div>{isOwnPost && <button className="cs-community-delete" type="button" onClick={() => deleteCommunityPost(post.id)}>Delete post</button>}</div>
               <p className="cs-community-post-content">{post.content}</p>
-              <div className="cs-community-actions"><button type="button" className={post.has_liked ? "liked" : ""} onClick={() => toggleCommunityLike(post.id)}><span aria-hidden="true">{post.has_liked ? "â™¥" : "â™¡"}</span> {post.has_liked ? "Liked" : "Like"} Â· {post.like_count}</button><button type="button" onClick={() => toggleCommunityComments(post.id)}><MessageCircle size={15} /> Comments Â· {post.comment_count}</button></div>
+              <div className="cs-community-actions"><button type="button" className={post.has_liked ? "liked" : ""} onClick={() => toggleCommunityLike(post.id)}><span aria-hidden="true">{post.has_liked ? "♥" : "♡"}</span> {post.has_liked ? "Liked" : "Like"} · {post.like_count}</button><button type="button" onClick={() => toggleCommunityComments(post.id)}><MessageCircle size={15} /> Comments · {post.comment_count}</button></div>
               {communityExpandedPost === post.id && <div className="cs-community-comments">
                 {communityCommentLoading[post.id] ? <p>Loading comments...</p> : (communityComments[post.id] || []).length === 0 ? <p className="cs-community-no-comments">No comments yet. Start the conversation.</p> : (communityComments[post.id] || []).map((comment) => (
                   <div className="cs-community-comment" key={comment.id}><span className="cs-avatar cs-avatar-small">{(comment.author_name || "S").split(" ").map((part) => part[0]).slice(0, 2).join("").toUpperCase()}</span><div><strong>{comment.author_name || "Campus member"}</strong><p>{comment.content}</p><small>{comment.created_at ? new Date(comment.created_at).toLocaleString() : ""}</small></div>{comment.user_id === user?.id && <button type="button" onClick={() => deleteCommunityComment(post.id, comment.id)}>Delete</button>}</div>
@@ -2266,7 +2266,7 @@ function StudentDashboard() {
                 <span className="cs-avatar">{initialsFor(question.author_name)}</span>
                 <div className="cs-community-author">
                   <strong>{question.author_name || "Campus member"}</strong>
-                  <small>{question.department_name || "College-wide"} Â· {question.created_at ? new Date(question.created_at).toLocaleString() : "Just now"}</small>
+                  <small>{question.department_name || "College-wide"} · {question.created_at ? new Date(question.created_at).toLocaleString() : "Just now"}</small>
                 </div>
                 <span className={`cs-qa-status ${question.is_resolved ? "resolved" : ""}`}>{question.is_resolved ? "Resolved" : "Open"}</span>
                 {isOwnQuestion && <button className="cs-community-delete" type="button" onClick={() => deleteAcademicQuestion(question.id)}>Delete</button>}
@@ -2274,7 +2274,7 @@ function StudentDashboard() {
               <h3 className="cs-qa-title">{question.title}</h3>
               <p className="cs-community-post-content">{question.content}</p>
               <div className="cs-community-actions">
-                <button type="button" onClick={() => toggleAcademicAnswers(question.id)}><MessageCircle size={15} /> {qaExpandedQuestion === question.id ? "Hide answers" : "Answers"} Â· {question.answer_count}</button>
+                <button type="button" onClick={() => toggleAcademicAnswers(question.id)}><MessageCircle size={15} /> {qaExpandedQuestion === question.id ? "Hide answers" : "Answers"} · {question.answer_count}</button>
               </div>
               {qaExpandedQuestion === question.id && (
                 <div className="cs-community-comments cs-qa-answers">
@@ -2284,12 +2284,12 @@ function StudentDashboard() {
                         <span className="cs-avatar cs-avatar-small">{initialsFor(answer.author_name)}</span>
                         <div className="cs-qa-answer-body">
                           <strong>{answer.author_name || "Campus member"}</strong>
-                          <small>{answer.author_role || "member"} Â· {answer.created_at ? new Date(answer.created_at).toLocaleString() : ""}</small>
+                          <small>{answer.author_role || "member"} · {answer.created_at ? new Date(answer.created_at).toLocaleString() : ""}</small>
                           <p>{answer.content}</p>
                           <div className="cs-community-actions cs-qa-answer-actions">
-                            <button type="button" className={answer.has_liked ? "liked" : ""} onClick={() => toggleAcademicAnswerLike(answer.id, question.id)}><span aria-hidden="true">{answer.has_liked ? "â™¥" : "â™¡"}</span> {answer.has_liked ? "Liked" : "Like"} Â· {answer.like_count}</button>
+                            <button type="button" className={answer.has_liked ? "liked" : ""} onClick={() => toggleAcademicAnswerLike(answer.id, question.id)}><span aria-hidden="true">{answer.has_liked ? "♥" : "♡"}</span> {answer.has_liked ? "Liked" : "Like"} · {answer.like_count}</button>
                             {isOwnQuestion && !question.is_resolved && <button type="button" onClick={() => acceptAcademicAnswer(question.id, answer.id)}>Accept answer</button>}
-                            {answer.is_accepted && <span className="cs-qa-accepted-label">âœ“ Accepted answer</span>}
+                            {answer.is_accepted && <span className="cs-qa-accepted-label">✓ Accepted answer</span>}
                           </div>
                         </div>
                         {answer.user_id === user?.id && <button className="cs-community-delete" type="button" onClick={() => deleteAcademicAnswer(question.id, answer.id)}>Delete</button>}
@@ -2504,7 +2504,7 @@ function StudentDashboard() {
                   <button type="button" key={contact.id} className="cs-message-contact"
                     onClick={() => openMessageConversation(contact)}>
                     <span className="cs-message-avatar">{(contact.full_name || "F").split(/\s+/).slice(0, 2).map((part) => part[0]).join("").toUpperCase()}</span>
-                    <span className="cs-message-contact-copy"><strong>{contact.full_name}</strong><small>{contact.department_name || "Faculty"} Â· {contact.email}</small></span>
+                    <span className="cs-message-contact-copy"><strong>{contact.full_name}</strong><small>{contact.department_name || "Faculty"} · {contact.email}</small></span>
                   </button>
                 ))}
                 {filteredContacts.length === 0 && <p className="cs-message-empty-small">No matching faculty found.</p>}
@@ -2516,7 +2516,7 @@ function StudentDashboard() {
                 <>
                   <header className="cs-message-chat-header">
                     <span className="cs-message-avatar large">{(selectedConversation.participant_name || "F").split(/\s+/).slice(0, 2).map((part) => part[0]).join("").toUpperCase()}</span>
-                    <div><strong>{selectedConversation.participant_name}</strong><small>{selectedConversation.department_name || "Faculty"} Â· {selectedConversation.participant_email || ""}</small></div>
+                    <div><strong>{selectedConversation.participant_name}</strong><small>{selectedConversation.department_name || "Faculty"} · {selectedConversation.participant_email || ""}</small></div>
                   </header>
                   <div className="cs-message-history">
                     {messagesLoading && conversationMessages.length === 0 ? <p className="cs-message-empty">Loading messages...</p> :
@@ -2528,7 +2528,7 @@ function StudentDashboard() {
                             <div className="cs-message-bubble">
                               {!own && <strong>{message.sender_name}</strong>}
                               <p>{message.content}</p>
-                              <small>{message.created_at ? new Date(message.created_at).toLocaleString() : ""}{own && message.read_at ? " Â· Read" : ""}</small>
+                              <small>{message.created_at ? new Date(message.created_at).toLocaleString() : ""}{own && message.read_at ? " · Read" : ""}</small>
                             </div>
                           </div>
                         );
@@ -2612,8 +2612,8 @@ function StudentDashboard() {
         <section className="cs-welcome">
           <div>
             <p className="cs-eyebrow">STUDENT WORKSPACE</p>
-            <h2>Welcome back, {user?.full_name?.split(" ")[0] || "Student"} ðŸ‘‹</h2>
-            <p>Hereâ€™s whatâ€™s happening in your campus today.</p>
+            <h2>Welcome back, {user?.full_name?.split(" ")[0] || "Student"} 👋</h2>
+            <p>Here's what's happening in your campus today.</p>
           </div>
           <div className="cs-welcome-icon"><GraduationCap size={42} /></div>
         </section>
@@ -2761,7 +2761,7 @@ function StudentDashboard() {
               <article className="cs-panel" key={notice.id} style={{marginTop:12}}>
                 <div className="cs-community-post-head"><div><span className="cs-qa-status resolved">{String(notice.category || "general").replaceAll("_"," ")}</span> <span className="cs-qa-status">{notice.priority} priority</span></div><small>{notice.published_at ? new Date(notice.published_at).toLocaleString() : ""}</small></div>
                 <h3 className="cs-qa-title">{notice.title}</h3>
-                <p className="cs-muted" style={{whiteSpace:"pre-wrap",lineHeight:1.7}}>{selectedNotice === notice.id ? notice.content : `${notice.content.slice(0, 220)}${notice.content.length > 220 ? "â€¦" : ""}`}</p>
+                <p className="cs-muted" style={{whiteSpace:"pre-wrap",lineHeight:1.7}}>{selectedNotice === notice.id ? notice.content : `${notice.content.slice(0, 220)}${notice.content.length > 220 ? "…" : ""}`}</p>
                 <div className="cs-qa-answer-actions"><span className="cs-muted">Posted by {notice.author_name || "College Admin"}</span><button className="cs-text-button" onClick={() => setSelectedNotice(selectedNotice === notice.id ? null : notice.id)}>{selectedNotice === notice.id ? "Show less" : "Read full notice"}</button></div>
               </article>
             ))}</div>
@@ -2878,7 +2878,7 @@ function StudentDashboard() {
                     </div>
                     <small className="cs-resource-uploader">
                       Uploaded by {resource.uploader_name || "Faculty"}
-                      {resource.created_at ? ` Â· ${new Date(resource.created_at).toLocaleDateString()}` : ""}
+                      {resource.created_at ? ` · ${new Date(resource.created_at).toLocaleDateString()}` : ""}
                     </small>
                   </div>
                   <div className="cs-resource-actions">
@@ -2917,7 +2917,7 @@ function StudentDashboard() {
         <p className="cs-eyebrow">CAMPUSSPHERE MODULE</p>
         <h3>{item.title}</h3>
         <p>{item.text}</p>
-        <span className="cs-coming-badge"><Clock3 size={14} /> UI ready Â· Backend integration pending</span>
+        <span className="cs-coming-badge"><Clock3 size={14} /> UI ready · Backend integration pending</span>
       </section>
     );
   }
@@ -3340,7 +3340,7 @@ function Home() {
               <span><Users size={16} /></span>
               <div>
                 <strong>One community</strong>
-                <small>Students Â· Faculty Â· Colleges</small>
+                <small>Students · Faculty · Colleges</small>
               </div>
             </div>
           </div>
@@ -3394,7 +3394,7 @@ function Home() {
             CampusSphere <b>AI</b>
           </Link>
           <span>One Campus. Every Connection.</span>
-          <span>Â© {new Date().getFullYear()} CampusSphere AI</span>
+          <span>© {new Date().getFullYear()} CampusSphere AI</span>
         </footer>
       </div>
     </main>

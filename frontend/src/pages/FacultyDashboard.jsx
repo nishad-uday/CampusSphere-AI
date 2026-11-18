@@ -1871,7 +1871,7 @@ export default function FacultyDashboard() {
         <p className="fd-eyebrow">FACULTY MODULE</p>
         <h2>{item.title}</h2>
         <p>{item.description}</p>
-        <span className="fd-pending-badge"><Clock3 size={14} /> UI ready Â· Backend integration pending</span>
+        <span className="fd-pending-badge"><Clock3 size={14} /> UI ready · Backend integration pending</span>
       </section>
     );
   }
