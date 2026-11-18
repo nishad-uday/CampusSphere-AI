@@ -1670,7 +1670,7 @@ function StudentDashboard() {
   const [logoutError, setLogoutError] = useState("");
   const [loggingOut, setLoggingOut] = useState(false);
   const [studentProfile, setStudentProfile] = useState(null);
-  const [profileLoading, setProfileLoading] = useState(false);
+  const [profileLoading, setProfileLoading] = useState(true);
   const [profileSaving, setProfileSaving] = useState(false);
   const [profileEditing, setProfileEditing] = useState(false);
   const [profileError, setProfileError] = useState("");
@@ -1754,7 +1754,7 @@ function StudentDashboard() {
   }
 
   useEffect(() => {
-    if (activeSection !== "profile") return;
+    
     let cancelled = false;
     async function loadProfile() {
       setProfileLoading(true);
@@ -1785,7 +1785,7 @@ function StudentDashboard() {
     }
     loadProfile();
     return () => { cancelled = true; };
-  }, [activeSection]);
+  }, []);
 
   async function loadCommunityFeed() {
     setCommunityLoading(true);
@@ -2664,7 +2664,14 @@ function StudentDashboard() {
             </div>
             <div className="cs-profile-line"><span>Account role</span><strong>Student</strong></div>
             <div className="cs-profile-line"><span>Account status</span><strong className="cs-active-status">Active</strong></div>
-            <div className="cs-profile-line"><span>College</span><strong>{user?.college_name || "College details not available"}</strong></div>
+            <div className="cs-profile-line">
+  <span>College</span>
+  <strong>
+    {studentProfile?.college_name ||
+      user?.college_name ||
+      "College details not available"}
+  </strong>
+</div>
           </article>
         </section>
 
