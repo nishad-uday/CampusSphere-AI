@@ -1,221 +1,247 @@
-﻿# CampusSphere AI
+# 🎓 CampusSphere AI
 
+### AI-Powered College Management & Student Support Platform
 
+CampusSphere AI is a smart college support platform designed to connect students and faculty members through academic services, campus communication, and AI-powered assistance.
 
-**An AI-Powered College Management and Student Support Platform**
+It provides a centralized digital campus experience where students can access academic resources, communicate with others, explore campus announcements, and get assistance through an AI-powered campus assistant.
 
+[🌐 Live Demo](https://campussphere-ai.pages.dev) · [⚙️ Backend API](https://campussphere-ai-zx3z.onrender.com) · [📖 API Documentation](https://campussphere-ai-zx3z.onrender.com/docs)
 
+---
 
-CampusSphere AI connects students, faculty members and college administrators through academic services, communication tools and an AI-powered campus assistant.
+## ✨ Key Features
 
+### 👨‍🎓 Student Dashboard
+- Personalized student dashboard
+- Student profile management
+- College information and account details
+- Quick access to campus services
+- Learning resources
+- Campus notices and announcements
+- Student community
+- Academic Q&A
+- Messaging functionality
+- AI Campus Assistant
 
+### 👩‍🏫 Faculty Dashboard
+- Dedicated faculty workspace
+- Faculty profile and dashboard
+- Student-related information
+- Campus communication tools
+- Academic support features
 
-## Dashboards
+### 🤖 AI Campus Assistant
+- AI-powered campus assistance
+- Interactive student support
+- AI integration for campus-related queries
 
-1. Student Dashboard
+### 💬 Communication & Collaboration
+- Student community
+- Messaging system
+- Academic discussions
+- Notices and announcements
 
-2. Faculty Dashboard
+---
 
-3. College Admin Dashboard
+## 🛠️ Technology Stack
 
+| Category | Technologies |
+|---|---|
+| Frontend | React.js, Vite, JavaScript |
+| Backend | Python, FastAPI |
+| Database | PostgreSQL |
+| Vector Database | pgvector |
+| AI Integration | Google Gemini API |
+| Real-time & Messaging | WebSocket |
+| Caching / Data Store | Redis |
+| Deployment | Cloudflare Pages, Render |
+| Version Control | Git, GitHub |
 
+---
 
-## Technology Stack
+## 🏗️ System Architecture
 
-\- Frontend: React, Vite, JavaScript
-
-\- Backend: Python, FastAPI, Uvicorn
-
-\- Database: PostgreSQL, pgvector
-
-\- Supporting Services: Redis, Docker Compose
-
-\- AI: Gemini API, Retrieval-Augmented Generation (RAG)
-
-
-
-## Main Features
-
-\- Authentication and role-based access
-
-\- Student and Faculty Management
-
-\- Student Profiles
-
-\- Direct Messaging
-
-\- Notices and Announcements
-
-\- Learning Resources
-
-\- Academic Q\&A
-
-\- AI Campus Assistant
-
-\- Document Upload and Retrieval
-
-
-
-## Local Setup
-
-
-
-### Requirements
-
-\- Python 3.11+
-
-\- Node.js 20+
-
-\- Docker Desktop
-
-\- Git
-
-
-
-### Configure Environment
-
-```powershell
-
-Copy-Item .env.example .env
-
-Copy-Item backend/.env.example backend/.env
-
-Copy-Item frontend/.env.example frontend/.env
-
+```mermaid
+flowchart TD
+    A[Student / Faculty] --> B[React + Vite Frontend]
+    B --> C[FastAPI Backend]
+    C --> D[PostgreSQL Database]
+    C --> E[Redis]
+    C --> F[Google Gemini API]
+    C --> G[WebSocket Communication]
 ```
 
+---
 
+## 📂 Project Structure
 
-### Start Database and Redis
-
-```powershell
-
-docker compose up -d
-
-docker compose ps
-
+```text
+CampusSphere-AI/
+│
+├── backend/
+│   ├── app/
+│   ├── migrations/
+│   ├── Dockerfile
+│   ├── requirements.txt
+│   └── alembic.ini
+│
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   ├── package.json
+│   └── vite.config.js
+│
+├── docker-compose.yml
+├── .env.example
+├── .gitignore
+└── README.md
 ```
 
+---
 
+## 🚀 Getting Started
 
-Enable pgvector:
+### Prerequisites
 
-```sql
+Make sure you have installed:
 
-CREATE EXTENSION IF NOT EXISTS vector;
+- Python
+- Node.js and npm
+- PostgreSQL with pgvector
+- Redis
+- Git
 
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/nishad-uday/CampusSphere-AI.git
+cd CampusSphere-AI
 ```
 
+### 2. Backend Setup
 
-
-### Backend Setup
-
-```powershell
-
+```bash
 cd backend
 
-py -3.11 -m venv .venv
-
-.\\\.venv\\\\Scripts\\\\Activate.ps1
-
-pip install -r requirements.txt
-
-alembic upgrade head
-
-uvicorn app.main:app --reload --host 127.0.0.1 --port 8001
-
+python -m venv env
 ```
 
+Activate the virtual environment.
 
+**Windows PowerShell:**
 
-API Documentation: http://127.0.0.1:8001/docs
+```powershell
+.\env\Scripts\Activate.ps1
+```
 
+Install dependencies:
 
+```bash
+pip install -r requirements.txt
+```
 
-### Frontend Setup
+Configure the backend environment variables using your local `.env` file.
+
+Run database migrations:
+
+```bash
+alembic upgrade head
+```
+
+Start the backend:
+
+```bash
+uvicorn app.main:app --reload
+```
+
+Backend API:
+
+```text
+http://127.0.0.1:8000
+```
+
+API documentation:
+
+```text
+http://127.0.0.1:8000/docs
+```
+
+### 3. Frontend Setup
 
 Open another terminal:
 
-```powershell
-
+```bash
 cd frontend
-
 npm install
+```
 
+Configure the frontend environment variables according to the project's API configuration.
+
+Start the development server:
+
+```bash
 npm run dev
-
 ```
-
-
-
-Frontend: http://localhost:5173
-
-
-
-### Testing
-
-Backend:
-
-```powershell
-
-cd backend
-
-python -m pytest -v
-
-```
-
-
 
 Frontend:
 
-```powershell
-
-npm run build
-
+```text
+http://localhost:5173
 ```
 
+---
 
+## 🌐 Live Deployment
 
-## Deployment
+| Service | Platform | URL |
+|---|---|---|
+| Frontend | Cloudflare Pages | https://campussphere-ai.pages.dev |
+| Backend | Render | https://campussphere-ai-zx3z.onrender.com |
+| API Documentation | FastAPI / Swagger | https://campussphere-ai-zx3z.onrender.com/docs |
 
-Planned hosting architecture:
+---
 
-\- GitHub: Source code
+## 🔐 Environment Configuration
 
-\- Vercel: Frontend
+The application requires environment variables for database connectivity, authentication, Redis, AI integration, and frontend-backend communication.
 
-\- Render: Backend
+Configure the required values in your local environment files.
 
-\- Managed PostgreSQL with pgvector
+**Important:** Never commit actual API keys, database passwords, or secret keys to GitHub.
 
-\- Managed Redis
+---
 
+## 🎯 Project Objective
 
+The main objective of CampusSphere AI is to make college-related services more accessible through a centralized platform.
 
-## Security
+It aims to improve communication between students and faculty, simplify access to academic information, and provide AI-powered assistance for campus-related queries.
 
-\- Never commit `.env` files.
+---
 
-\- Never publish API keys, passwords or access tokens.
+## 🔮 Future Enhancements
 
-\- Keep uploaded college documents private.
+- Enhanced AI-powered academic assistance
+- Improved real-time communication
+- Advanced learning resource management
+- More academic collaboration features
+- Additional campus automation capabilities
 
-\- Enforce role-based authorization on backend endpoints.
+---
 
-\- Use HTTPS in production.
+## 👨‍💻 Developer
 
+**Uday Kumar**
 
+B.Tech – Computer Science & Engineering
 
-## Project Scope
+Full Stack Developer | AI & Machine Learning Enthusiast
 
-CampusSphere AI includes Student, Faculty and College Admin dashboards.
+GitHub: [@nishad-uday](https://github.com/nishad-uday)
 
+---
 
-
-Future enhancements may include attendance, timetable, assignments, analytics and mobile applications.
-
-
-
-## License
-
-An appropriate open-source license should be selected before permitting reuse of this public repository.
+<p align="center">
+  <b>CampusSphere AI – Connecting Campus Through Technology 🚀</b>
+</p>
